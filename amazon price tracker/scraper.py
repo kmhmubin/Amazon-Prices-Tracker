@@ -9,20 +9,22 @@ url = "https://www.amazon.com/Acer-Display-Graphics-Keyboard-A515-43-R19L/dp/B07
 
 # Price converter
 def converted_price(price):
-    convert_price = float(re.sub(r"[^\d.]", "", price))  # converting the string into float
+    convert_price = float(re.sub(r"[^\d.]", "", price))  # converting the html elements into float
     return convert_price
 
 
 # Scarping product details
 def products_details():
+    # containing the user-agent
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"}
-
+    # storing product details  in a dictionary
     details = {"name": "",
                "price": 0,
                "deal": True,
+               "availability": "",
                "url": ""}
-    _url = url  # calling the url link
+    _url = url  # calling the url variable
     if _url == "":  # checking the url is empty or not
         details = None  # if url empty it will print None
     else:  # if the url not empty
@@ -30,6 +32,7 @@ def products_details():
         soup = BeautifulSoup(page.content, "html5lib")
         title = soup.find(id="productTitle")  # it will find the product title
         price = soup.find(id="priceblock_dealprice")  # it will find the deal price
+        stock = soup.find(id="availability")  # it will check the product is available or not
         if price is None:  # if there is no deal price
             price = soup.find(id="priceblock_ourprice")  # it will check amazon price
             details["deal"] = False  # if there is no deal price it will print false
@@ -37,6 +40,7 @@ def products_details():
             details["name"] = title.get_text().strip()  # it will extract the title name and print
             details["price"] = converted_price(
                 price.get_text())  # calling the convert price function and print the price
+            details["availability"] = stock.get_text().strip()  # it will find the availability of the product and print
             details["url"] = _url  # print the url
         else:
             return None  # if nothing found it will print None
