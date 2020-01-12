@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 # URL verification function
 def url_verifier(url):
     if url.find("www.amazon.com") != -1:
-        index = url.find("/dp")
+        index = url.find("/dp/")
         if index != -1:
             index2 = index + 14
             url = "https://wwww.amazon.com" + url[index:index2]
@@ -59,5 +59,7 @@ def products_details(url):
             return None
     return details
 
+
 # printing the product details
-print(products_details("https://www.amazon.com/Samsung-Galaxy-Factory-Unlocked-Warranty/dp/B07N4GKMHB/ref=sxin_2_ac_d_rm?ac_md=0-0-c2Ftc3VuZyBnYWxheHkgczEw-ac_d_rm&crid=3V9OX5Q11R90G&cv_ct_cx=samsung+galaxy+s10&keywords=samsung+galaxy+s10&pd_rd_i=B07N4GKMHB&pd_rd_r=9d2d073b-8041-43c1-bd19-662f6bcf2156&pd_rd_w=j1ssW&pd_rd_wg=mAYdr&pf_rd_p=e2f20af2-9651-42af-9a45-89425d5bae34&pf_rd_r=Q0K5FRSAQAF42R4A55SN&psc=1&qid=1578815416&sprefix=samsung+%2Caps%2C566"))
+print(products_details(
+    "https://www.amazon.com/Acer-Display-Graphics-Keyboard-A515-43-R19L/dp/B07RF1XD36/ref=sr_1_1?fst=as%3Aoff&qid=1578819515&rnid=16225007011&s=computers-intl-ship&sr=1-1"))
