@@ -4,4 +4,6 @@
 ## Here is the tutorial link:
 [Amazon Price Tracker Using Python](https://codeeureka.com/amazon-product-price-tracker-using-python/)
 
-## DEMO
+
+## DEMO 
+![Result Output](https://i.imgur.com/hqvNENP.mp4)
