@@ -6,4 +6,4 @@
 
 
 ## DEMO 
-![Result Output](https://i.imgur.com/hqvNENP.mp4)
+![Result Output](https://i.imgur.com/JmFSSkX.gif)
